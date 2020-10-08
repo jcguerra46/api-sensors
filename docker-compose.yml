@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  api-sensors:
+    build: .
+    volumes:
+      - ./:/var/www/html/
+    working_dir: /var/www/html
+    ports:
+      - 80:80
+      - 443:443
+    extra_hosts:
+      - "localhost:127.0.0.1"
+
+  pgsql:
+    image: postgres:12.2-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=api_sensors
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+
+  pgsql_test:
+    image: postgres:12.2-alpine
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_DB=api_sensors_test
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret

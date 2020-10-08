@@ -1,0 +1,211 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Sensors",
+        "contact": {
+            "email": "juancarlosguerra46@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/sensors": {
+            "get": {
+                "tags": [
+                    "Sensors"
+                ],
+                "summary": "Get sensors list",
+                "description": "Return a listing of sensors.",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "sensors overview."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sensors"
+                ],
+                "summary": "Store a sensor",
+                "description": "Store a sensor in storage.",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "name": "x_axis",
+                        "in": "query",
+                        "description": "X axis",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "y_axis",
+                        "in": "query",
+                        "description": "Y axis",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Sensor created."
+                    },
+                    "422": {
+                        "description": " Unprocessable Entity."
+                    }
+                }
+            }
+        },
+        "/sensors/{id}": {
+            "get": {
+                "tags": [
+                    "Sensors"
+                ],
+                "summary": "Get a sensor info",
+                "description": "Show a sensor info.",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sensor ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sensor overview."
+                    },
+                    "404": {
+                        "description": "Sensor not found."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sensors"
+                ],
+                "summary": "Update a sensor",
+                "description": "Update a sensor.",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sensor id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "x_axis",
+                        "in": "query",
+                        "description": "X axis",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "y_axis",
+                        "in": "query",
+                        "description": "Y axis",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sensor overview."
+                    },
+                    "422": {
+                        "description": " Unprocessable Entity."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sensors"
+                ],
+                "summary": "Delete a sensor",
+                "description": "Delete sensor.",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sensor ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sensor deleted."
+                    },
+                    "404": {
+                        "description": "Sensor not found."
+                    }
+                }
+            }
+        },
+        "/sensors/{id}/nearby": {
+            "get": {
+                "tags": [
+                    "Sensors"
+                ],
+                "summary": "Get nearby sensors list",
+                "description": "Show nearby sensor list.",
+                "operationId": "nearby",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sensor ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "sensor_limit",
+                        "in": "query",
+                        "description": "Sensor limit to show",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "max_distance",
+                        "in": "query",
+                        "description": "Scope of maximum distance of sensors",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sensor overview."
+                    },
+                    "404": {
+                        "description": "Sensor not found."
+                    }
+                }
+            }
+        }
+    }
+}
