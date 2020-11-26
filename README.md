@@ -29,15 +29,15 @@ Para esta prueba técnica se utilizó:
    ---
 ## Instalacion
  ---
+ ... bash
+ # 1.- Para la instalación de esta API desde el terminal, debe clonar este repositorio y copiar las variables de entorno:
  
- 1.- Para la instalación de esta API desde el terminal, debe clonar este repositorio y copiar las variables de entorno:
- 
-** $ git clone https://bitbucket.org/jcguerra46/api-sensors.git **
+ $ git clone https://bitbucket.org/jcguerra46/api-sensors.git 
 
-** $ cd api-sensors **
+ $ cd api-sensors 
 
-** $ cp .env.example .env **
-
+ $ cp .env.example .env 
+...
  ---
  2.- Levantar los servicios de Docker con el siguiente comando:
  
